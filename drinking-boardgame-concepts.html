@@ -1,0 +1,1202 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>飲み会で遊べるボードゲーム企画 10案</title>
+  <style>
+    :root {
+      --ink: #201c18;
+      --muted: #6b6258;
+      --paper: #f7f2e8;
+      --paper-deep: #ece1d1;
+      --wine: #8b2635;
+      --mint: #4d8b72;
+      --amber: #c9822d;
+      --blue: #2f6f91;
+      --charcoal: #292622;
+      --line: rgba(32, 28, 24, .18);
+      --shadow: 0 18px 48px rgba(32, 28, 24, .14);
+      --radius: 8px;
+      --serif: Georgia, "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+      --sans: "Avenir Next", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(32, 28, 24, .04) 1px, transparent 1px),
+        linear-gradient(rgba(32, 28, 24, .035) 1px, transparent 1px),
+        var(--paper);
+      background-size: 28px 28px;
+      font-family: var(--sans);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 72vh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(32, 28, 24, .9), rgba(32, 28, 24, .58) 48%, rgba(139, 38, 53, .68)),
+        radial-gradient(circle at 18% 24%, rgba(201, 130, 45, .36), transparent 30%),
+        radial-gradient(circle at 84% 38%, rgba(77, 139, 114, .28), transparent 34%),
+        #24211d;
+      color: #fff9ec;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(115deg, transparent 0 53%, rgba(255, 255, 255, .08) 53.2% 54.6%, transparent 54.8%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.045) 0 1px, transparent 1px 9px);
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 72px 0 54px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 24px;
+      color: #f7d9a4;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 42px;
+      height: 2px;
+      background: currentColor;
+    }
+
+    h1 {
+      max-width: 980px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(42px, 8vw, 96px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      margin: 26px 0 0;
+      color: rgba(255, 249, 236, .86);
+      font-size: clamp(16px, 2.2vw, 20px);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 34px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 12px;
+      border: 1px solid rgba(255, 249, 236, .34);
+      border-radius: 999px;
+      background: rgba(255, 249, 236, .08);
+      color: rgba(255, 249, 236, .9);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 54px 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 24px;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 14px;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .section-title p {
+      max-width: 560px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .summary-tile {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .42);
+      box-shadow: 0 8px 26px rgba(32, 28, 24, .07);
+      padding: 18px;
+    }
+
+    .summary-tile strong {
+      display: block;
+      margin-bottom: 6px;
+      font-family: var(--serif);
+      font-size: 25px;
+      line-height: 1;
+      color: var(--wine);
+    }
+
+    .summary-tile span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .nav-card {
+      min-height: 96px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fffaf0;
+      padding: 13px;
+      text-decoration: none;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .nav-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(139, 38, 53, .42);
+      box-shadow: var(--shadow);
+    }
+
+    .nav-card b {
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    .nav-card small {
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .concept {
+      position: relative;
+      margin: 28px 0 42px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fffaf0;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .concept:nth-child(3n + 1) .concept-band {
+      background: var(--wine);
+    }
+
+    .concept:nth-child(3n + 2) .concept-band {
+      background: var(--mint);
+    }
+
+    .concept:nth-child(3n) .concept-band {
+      background: var(--blue);
+    }
+
+    .concept-band {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      color: #fff9ec;
+    }
+
+    .rank {
+      display: grid;
+      place-items: center;
+      min-height: 118px;
+      border-right: 1px solid rgba(255, 255, 255, .25);
+      font-family: var(--serif);
+      font-size: 44px;
+      font-weight: 800;
+    }
+
+    .concept-head {
+      padding: 22px 26px 24px;
+    }
+
+    h3 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .tagline {
+      max-width: 840px;
+      margin: 10px 0 0;
+      color: rgba(255, 249, 236, .88);
+      font-size: 16px;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-bottom: 1px solid var(--line);
+      background: var(--paper-deep);
+    }
+
+    .fact {
+      min-height: 74px;
+      padding: 13px 16px;
+      border-right: 1px solid rgba(32, 28, 24, .12);
+    }
+
+    .fact:last-child {
+      border-right: 0;
+    }
+
+    .fact span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .fact b {
+      display: block;
+      margin-top: 4px;
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .concept-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+      gap: 0;
+    }
+
+    .main-copy,
+    .side-copy {
+      padding: 24px 26px 28px;
+    }
+
+    .side-copy {
+      border-left: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(201, 130, 45, .08), transparent 38%),
+        rgba(236, 225, 209, .42);
+    }
+
+    .block {
+      margin: 0 0 22px;
+    }
+
+    .block:last-child {
+      margin-bottom: 0;
+    }
+
+    h4 {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 9px;
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--wine);
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    h4::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      background: currentColor;
+      transform: rotate(45deg);
+    }
+
+    .block p {
+      margin: 0;
+      color: var(--ink);
+    }
+
+    ul,
+    ol {
+      margin: 0;
+      padding-left: 1.25em;
+    }
+
+    li {
+      margin: 0 0 6px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      border: 1px solid rgba(32, 28, 24, .16);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .66);
+      padding: 4px 10px;
+      color: var(--charcoal);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .sample {
+      border-left: 4px solid var(--amber);
+      background: rgba(255, 255, 255, .72);
+      padding: 12px 14px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .sample b {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--charcoal);
+    }
+
+    .safe-note {
+      border-top: 1px solid var(--line);
+      background: #201c18;
+      color: rgba(255, 249, 236, .88);
+      padding: 18px 26px;
+      font-size: 13px;
+    }
+
+    .safe-note b {
+      color: #f4c36b;
+    }
+
+    .closing {
+      margin: 22px auto 70px;
+      border: 2px solid var(--ink);
+      border-radius: var(--radius);
+      background: #fffaf0;
+      padding: 24px;
+    }
+
+    .closing h2 {
+      font-size: clamp(26px, 4vw, 42px);
+    }
+
+    .next-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .next-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper-deep);
+      padding: 14px;
+    }
+
+    .next-item b {
+      display: block;
+      margin-bottom: 4px;
+      font-family: var(--serif);
+      font-size: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .summary-grid,
+      .facts,
+      .next-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .concept-body {
+        grid-template-columns: 1fr;
+      }
+
+      .side-copy {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        min-height: 70vh;
+      }
+
+      .hero-inner,
+      .wrap {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .section {
+        padding: 38px 0;
+      }
+
+      .section-title {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .summary-grid,
+      .facts,
+      .nav-grid,
+      .next-list {
+        grid-template-columns: 1fr;
+      }
+
+      .concept-band {
+        grid-template-columns: 68px 1fr;
+      }
+
+      .rank {
+        min-height: 104px;
+        font-size: 34px;
+      }
+
+      .concept-head,
+      .main-copy,
+      .side-copy,
+      .safe-note {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Board Game Concept Deck</p>
+      <h1>飲み会で遊べるボードゲーム企画 10案</h1>
+      <p class="hero-copy">飲む量で盛り上げるのではなく、乾杯・水・つまみ・注文・会話・席順をゲームの中心に置く。宅飲み、バー、ゲーム会で安全に遊べる企画として、上位10案を試作に進めやすい粒度まで整理しました。</p>
+      <div class="hero-meta" aria-label="前提条件">
+        <span class="pill">飲酒は任意</span>
+        <span class="pill">ノンアル・水で代替可</span>
+        <span class="pill">カード中心で試作可能</span>
+        <span class="pill">対象: 大人の飲み会/ゲーム会</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>企画の前提</h2>
+          <p>全案共通で、一気飲み・飲酒強制・罰ゲーム飲酒は入れません。飲み物は演出と選択肢であり、ゲーム上の処理はカード、トークン、宣言で完結します。</p>
+        </div>
+        <div class="summary-grid">
+          <div class="summary-tile">
+            <strong>3-6人</strong>
+            <span>初回ターゲット。飲み会の卓で自然に始めやすい人数。</span>
+          </div>
+          <div class="summary-tile">
+            <strong>15-45分</strong>
+            <span>軽量作は15分、経営/協力寄りは30分前後を想定。</span>
+          </div>
+          <div class="summary-tile">
+            <strong>小箱</strong>
+            <span>カード、チップ、席札、つまみトークンで初回試作可能。</span>
+          </div>
+          <div class="summary-tile">
+            <strong>安全設計</strong>
+            <span>飲む代わりに、水・ノンアル・お通し・乾杯札で処理。</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>10案ナビ</h2>
+          <p>クリックで各企画へ移動できます。まず作るなら、会話推理の「乾杯アリバイ」か、小箱会話ゲームの「お通し心理戦」が試作しやすいです。</p>
+        </div>
+        <nav class="nav-grid" aria-label="企画一覧">
+          <a class="nav-card" href="#concept-1"><small>01</small><b>酔わない酒場戦略</b></a>
+          <a class="nav-card" href="#concept-2"><small>02</small><b>バー救済24時</b></a>
+          <a class="nav-card" href="#concept-3"><small>03</small><b>乾杯アリバイ</b></a>
+          <a class="nav-card" href="#concept-4"><small>04</small><b>乾杯同盟</b></a>
+          <a class="nav-card" href="#concept-5"><small>05</small><b>秘密のペアリング競売</b></a>
+          <a class="nav-card" href="#concept-6"><small>06</small><b>つまみ総選挙</b></a>
+          <a class="nav-card" href="#concept-7"><small>07</small><b>マスターの席札</b></a>
+          <a class="nav-card" href="#concept-8"><small>08</small><b>お通し心理戦</b></a>
+          <a class="nav-card" href="#concept-9"><small>09</small><b>バー・ミラージュ</b></a>
+          <a class="nav-card" href="#concept-10"><small>10</small><b>乾杯写真館</b></a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>企画詳細</h2>
+          <p>各案は、最低限のコンポーネントと1ラウンドの動きが見えるように整理しています。紙・付箋・トランプ・コインで初回テストに入れる粒度です。</p>
+        </div>
+
+        <article class="concept" id="concept-1">
+          <div class="concept-band">
+            <div class="rank">01</div>
+            <div class="concept-head">
+              <h3>酔わない酒場戦略</h3>
+              <p class="tagline">客の満足度と安全管理を両立する、少しブラックで優しいバー運営ゲーム。</p>
+            </div>
+          </div>
+          <div class="facts">
+            <div class="fact"><span>Players</span><b>2-5人</b></div>
+            <div class="fact"><span>Time</span><b>30-45分</b></div>
+            <div class="fact"><span>Type</span><b>半協力・経営</b></div>
+            <div class="fact"><span>Prototype</span><b>カード80枚 + トークン</b></div>
+          </div>
+          <div class="concept-body">
+            <div class="main-copy">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>プレイヤーは共同バーのスタッフ。注文を取って売上を伸ばすほど、客の疲れ・空腹・水分不足が増える。売上、評判、安全の3指標を全部守りながら、自分の担当目標も達成する。</p>
+              </div>
+              <div class="block">
+                <h4>基本の流れ</h4>
+                <ol>
+                  <li>客カードを公開し、注文・性格・注意状態を確認する。</li>
+                  <li>各プレイヤーが「提供」「水を出す」「つまみを勧める」「休憩席へ案内」「会話で落ち着かせる」から同時選択する。</li>
+                  <li>注文が成功すると売上が増えるが、ケアが不足すると評判や安全ゲージが下がる。</li>
+                  <li>閉店時に店が潰れず、個人目標も満たした人が勝利候補になる。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chip-row">
+                  <span class="chip">客カード</span>
+                  <span class="chip">注文カード</span>
+                  <span class="chip">水トークン</span>
+                  <span class="chip">つまみトークン</span>
+                  <span class="chip">評判/安全/売上ボード</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side-copy">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                客「勢いだけの新人」: 注文成功で売上+2。ただし水が出ていないと安全-1。つまみを出すと評判+1。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>飲むことではなく、水・つまみ・休憩を資源化する。プレイヤー自身は実飲しなくてよく、卓上のケア判断がゲームになる。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>説教臭くならないように、客のクセとイベントをコミカルにする。売上を狙う人と安全を守る人の温度差が笑いになる設計が大事。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe-note"><b>安全ルール:</b> ゲーム中の「提供」はカード処理。実際の飲酒量には一切連動させない。</div>
+        </article>
+
+        <article class="concept" id="concept-2">
+          <div class="concept-band">
+            <div class="rank">02</div>
+            <div class="concept-head">
+              <h3>バー救済24時</h3>
+              <p class="tagline">閉店寸前のバーを、全員で一晩だけ立て直す協力ゲーム。</p>
+            </div>
+          </div>
+          <div class="facts">
+            <div class="fact"><span>Players</span><b>3-6人</b></div>
+            <div class="fact"><span>Time</span><b>25-40分</b></div>
+            <div class="fact"><span>Type</span><b>完全協力・危機管理</b></div>
+            <div class="fact"><span>Prototype</span><b>イベントカード + 役職カード</b></div>
+          </div>
+          <div class="concept-body">
+            <div class="main-copy">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>プレイヤーはマスター、料理担当、ホール、常連、助っ人などの役職を持つ。トラブルが毎ラウンド発生し、乾杯・水提供・つまみ補充・会計・片付けを分担して店の存続ゲージを守る。</p>
+              </div>
+              <div class="block">
+                <h4>基本の流れ</h4>
+                <ol>
+                  <li>トラブルカードをめくる。「団体客」「氷切れ」「常連の相談」「終電間近」など。</li>
+                  <li>全員が手札から1枚を伏せ、同時公開する。</li>
+                  <li>役職能力とカード効果で、売上・雰囲気・体力・安全ゲージを調整する。</li>
+                  <li>24時までに借金を返し、常連ゲージを一定以上にすれば勝利。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chip-row">
+                  <span class="chip">役職カード</span>
+                  <span class="chip">トラブルカード</span>
+                  <span class="chip">対応カード</span>
+                  <span class="chip">店ゲージ</span>
+                  <span class="chip">時間トラック</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side-copy">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                トラブル「謎の二次会客」: 売上+3のチャンス。対応に水かつまみがない場合、雰囲気-2。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>乾杯は全員の士気回復、水とつまみは安全維持。飲み会の所作が協力アクションとして自然に入る。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>協力ゲーム特有の指示役問題を避けるため、同時選択と個別の隠し小目標を入れると良い。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe-note"><b>安全ルール:</b> 乾杯はグラスを掲げるだけでも成立。水やノンアルを標準として扱う。</div>
+        </article>
+
+        <article class="concept" id="concept-3">
+          <div class="concept-band">
+            <div class="rank">03</div>
+            <div class="concept-head">
+              <h3>乾杯アリバイ</h3>
+              <p class="tagline">乾杯した相手とだけ秘密情報を交換できる、飲み会推理ゲーム。</p>
+            </div>
+          </div>
+          <div class="facts">
+            <div class="fact"><span>Players</span><b>4-8人</b></div>
+            <div class="fact"><span>Time</span><b>15-25分</b></div>
+            <div class="fact"><span>Type</span><b>会話推理・正体隠匿</b></div>
+            <div class="fact"><span>Prototype</span><b>秘密カード + 乾杯札</b></div>
+          </div>
+          <div class="concept-body">
+            <div class="main-copy">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>ある夜、誰かが「最後の一杯」をすり替えた。各プレイヤーは断片的な記憶を持つ。ラウンドごとに1人を選んで乾杯し、その相手とだけ秘密情報を交換できる。誰と情報交換するかがそのまま疑惑になる。</p>
+              </div>
+              <div class="block">
+                <h4>基本の流れ</h4>
+                <ol>
+                  <li>全員に役割カードと記憶カードを配る。犯人役だけ目的が違う。</li>
+                  <li>各ラウンド、全員が乾杯したい相手を同時に指名する。</li>
+                  <li>相互指名なら密談成功。片思い指名なら公開ヒントだけ得る。</li>
+                  <li>3ラウンド後に討論し、犯人とすり替え理由を投票する。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chip-row">
+                  <span class="chip">役割カード</span>
+                  <span class="chip">記憶カード</span>
+                  <span class="chip">乾杯指名札</span>
+                  <span class="chip">疑惑トークン</span>
+                  <span class="chip">事件シート</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side-copy">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                記憶「22:18、青いグラスを持つ人が席を外した。ただし相手が誰かは覚えていない。」
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>乾杯相手の選択が情報ルートになる。飲む必要はなく、乾杯札・グラスを掲げる・水で乾杯で処理できる。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>事件の種類を複数用意するとリプレイ性が出る。最初は「すり替え」「消えた会計」「謎の裏メニュー」など軽めが合う。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe-note"><b>安全ルール:</b> 乾杯は情報交換の合図。実際に飲むかどうかは完全任意。</div>
+        </article>
+
+        <article class="concept" id="concept-4">
+          <div class="concept-band">
+            <div class="rank">04</div>
+            <div class="concept-head">
+              <h3>乾杯同盟</h3>
+              <p class="tagline">店を繁盛させるために協力する。でも、最後に得する相手は選びたい。</p>
+            </div>
+          </div>
+          <div class="facts">
+            <div class="fact"><span>Players</span><b>3-6人</b></div>
+            <div class="fact"><span>Time</span><b>25-35分</b></div>
+            <div class="fact"><span>Type</span><b>半協力・交渉</b></div>
+            <div class="fact"><span>Prototype</span><b>同盟カード + 店ボード</b></div>
+          </div>
+          <div class="concept-body">
+            <div class="main-copy">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>全員で店の売上を伸ばさないと全員敗北。ただし各自には「甘口メニューを一番売る」「特定プレイヤーより評判を取る」などの個人目標がある。乾杯すると共同アクションが強化されるが、相手にも利益が入る。</p>
+              </div>
+              <div class="block">
+                <h4>基本の流れ</h4>
+                <ol>
+                  <li>今夜の客層と流行ドリンクを公開する。</li>
+                  <li>プレイヤーは手札から店アクションを選び、必要なら誰かと乾杯同盟を結ぶ。</li>
+                  <li>同盟した2人は効果が上がるが、ボーナス配分を交渉する。</li>
+                  <li>閉店時、店が基準点を超えたうえで個人点を比べる。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chip-row">
+                  <span class="chip">店アクションカード</span>
+                  <span class="chip">個人目標カード</span>
+                  <span class="chip">乾杯同盟札</span>
+                  <span class="chip">売上/評判トラック</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side-copy">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                同盟「一杯目キャンペーン」: 2人で出すと売上+3。どちらか片方が評判+1を得る。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>乾杯が協力の契約になる。グラスを合わせる、札を置く、合言葉を言うなど、場に合わせて演出できる。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>半協力なので、裏切りが強すぎると場が荒れる。裏切りより「誰を得させるか」の悩みに寄せると飲み会向き。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe-note"><b>安全ルール:</b> 乾杯は同盟宣言であり、飲酒行動ではない。ノンアル乾杯を標準ルールに入れる。</div>
+        </article>
+
+        <article class="concept" id="concept-5">
+          <div class="concept-band">
+            <div class="rank">05</div>
+            <div class="concept-head">
+              <h3>秘密のペアリング競売</h3>
+              <p class="tagline">料理とドリンクの最高の組み合わせを、競りと読み合いで作る。</p>
+            </div>
+          </div>
+          <div class="facts">
+            <div class="fact"><span>Players</span><b>2-5人</b></div>
+            <div class="fact"><span>Time</span><b>20-30分</b></div>
+            <div class="fact"><span>Type</span><b>競り・セット収集</b></div>
+            <div class="fact"><span>Prototype</span><b>料理/ドリンクカード各40枚</b></div>
+          </div>
+          <div class="concept-body">
+            <div class="main-copy">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>場に並ぶ料理カードとドリンクカードを競り落とし、自分だけのコースを作る。カードには「甘い」「酸味」「香ばしい」「軽い」「濃い」などのタグがあり、相性が良いほど得点が伸びる。</p>
+              </div>
+              <div class="block">
+                <h4>基本の流れ</h4>
+                <ol>
+                  <li>料理3枚、ドリンク3枚を公開する。</li>
+                  <li>プレイヤーはチップで競り、1枚ずつ獲得する。</li>
+                  <li>獲得後、手元の料理とドリンクを組み合わせてペアリングを作る。</li>
+                  <li>秘密の好みカードと公開トレンドで得点する。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chip-row">
+                  <span class="chip">料理カード</span>
+                  <span class="chip">ドリンクカード</span>
+                  <span class="chip">好みカード</span>
+                  <span class="chip">競りチップ</span>
+                  <span class="chip">感想カード</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side-copy">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                料理「焦がしチーズ」: 香ばしい/濃い。ドリンク「柑橘ソーダ」: 酸味/軽い。相反タグで意外性+2。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>実際の味見は任意。飲み物やつまみを用意できる場では感想カードでボーナス、用意できない場ではタグだけで遊べる。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>食べ物/飲み物の名前が魅力を左右する。コンビニつまみ版、居酒屋版、クラフトドリンク版など展開しやすい。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe-note"><b>安全ルール:</b> 味見は任意の演出。ゲーム上の得点はカードタグで完結する。</div>
+        </article>
+
+        <article class="concept" id="concept-6">
+          <div class="concept-band">
+            <div class="rank">06</div>
+            <div class="concept-head">
+              <h3>つまみ総選挙</h3>
+              <p class="tagline">今夜いちばん愛されるおつまみを、演説と裏工作で決める。</p>
+            </div>
+          </div>
+          <div class="facts">
+            <div class="fact"><span>Players</span><b>3-8人</b></div>
+            <div class="fact"><span>Time</span><b>15-25分</b></div>
+            <div class="fact"><span>Type</span><b>投票・大喜利・軽交渉</b></div>
+            <div class="fact"><span>Prototype</span><b>候補カード + 投票札</b></div>
+          </div>
+          <div class="concept-body">
+            <div class="main-copy">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>各プレイヤーは推しつまみ陣営の選対担当。枝豆、唐揚げ、チーズ、ポテチ、冷奴などの候補を、ドリンク属性や場の空気に合わせて推していく。勝つのは単純な人気ではなく、裏公約と相性ボーナスを読んだ陣営。</p>
+              </div>
+              <div class="block">
+                <h4>基本の流れ</h4>
+                <ol>
+                  <li>今夜のドリンク属性を公開する。例: 泡、甘口、辛口、ノンアル。</li>
+                  <li>各自が推しつまみカードを1枚選ぶ。</li>
+                  <li>演説カードや裏公約カードで票を動かす。</li>
+                  <li>公開投票と隠し投票を合算し、相性ボーナスを加えて勝者を決める。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chip-row">
+                  <span class="chip">つまみ候補カード</span>
+                  <span class="chip">ドリンク属性カード</span>
+                  <span class="chip">演説カード</span>
+                  <span class="chip">裏公約カード</span>
+                  <span class="chip">投票札</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side-copy">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                裏公約「締めまで責任を持ちます」: 最終ラウンドで票+2。ただし途中で最下位なら無効。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>ドリンク属性が選挙情勢を変える。実物のつまみがあると盛り上がるが、カードだけでも成立する。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>候補つまみのキャラ付けが命。真面目な選挙用語とくだらないつまみ論争の落差を強くする。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe-note"><b>安全ルール:</b> 主役はつまみ。飲酒ではなく相性と投票で盛り上げる。</div>
+        </article>
+
+        <article class="concept" id="concept-7">
+          <div class="concept-band">
+            <div class="rank">07</div>
+            <div class="concept-head">
+              <h3>マスターの席札</h3>
+              <p class="tagline">客の相性を読み、最高のカウンター席を作る配置パズル。</p>
+            </div>
+          </div>
+          <div class="facts">
+            <div class="fact"><span>Players</span><b>1-4人</b></div>
+            <div class="fact"><span>Time</span><b>20-30分</b></div>
+            <div class="fact"><span>Type</span><b>配置パズル・接客</b></div>
+            <div class="fact"><span>Prototype</span><b>客カード + 席ボード</b></div>
+          </div>
+          <div class="concept-body">
+            <div class="main-copy">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>プレイヤーはバーのマスター。客カードには好みの飲み属性、隣に座りたいタイプ、避けたいタイプが書かれている。席順を調整して、店内の空気と売上を最大化する。</p>
+              </div>
+              <div class="block">
+                <h4>基本の流れ</h4>
+                <ol>
+                  <li>新規客カードを3枚公開する。</li>
+                  <li>手番プレイヤーは1人を席に案内し、必要なら既存客を1席だけ動かす。</li>
+                  <li>隣接条件、飲み属性、会話相性で得点する。</li>
+                  <li>満席になったらイベントを解決し、最終評判を比べる。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chip-row">
+                  <span class="chip">カウンターボード</span>
+                  <span class="chip">客カード</span>
+                  <span class="chip">飲み属性チップ</span>
+                  <span class="chip">空気イベントカード</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side-copy">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                客「聞き上手の常連」: 甘口の隣で+1。愚痴りたい客の隣で+2。騒がしい客の隣で-1。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>甘口、辛口、泡、香り、ノンアルなどの属性が席配置に影響する。飲む量は不要で、飲み物の個性だけ使う。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>地味になりやすいので、客キャラの名前と効果を尖らせる。ソロ対応もできるので試作検証がしやすい。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe-note"><b>安全ルール:</b> 飲み属性はカード効果。実際の飲み物を用意しなくても遊べる。</div>
+        </article>
+
+        <article class="concept" id="concept-8">
+          <div class="concept-band">
+            <div class="rank">08</div>
+            <div class="concept-head">
+              <h3>お通し心理戦</h3>
+              <p class="tagline">お通しを渡して質問権を得る、軽く深い飲み会会話ゲーム。</p>
+            </div>
+          </div>
+          <div class="facts">
+            <div class="fact"><span>Players</span><b>3-7人</b></div>
+            <div class="fact"><span>Time</span><b>10-20分</b></div>
+            <div class="fact"><span>Type</span><b>会話・心理戦・小箱</b></div>
+            <div class="fact"><span>Prototype</span><b>質問カード + お通しトークン</b></div>
+          </div>
+          <div class="concept-body">
+            <div class="main-copy">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>プレイヤーはお通しトークンを誰かに渡すことで質問権を得る。ただし質問には「軽い」「深い」「変な」の3段階があり、相手は答えるか、別のお通しを返してかわすか選べる。本音を引き出すほど得点になるが、踏み込みすぎると空気ポイントを失う。</p>
+              </div>
+              <div class="block">
+                <h4>基本の流れ</h4>
+                <ol>
+                  <li>質問カードを3枚公開する。</li>
+                  <li>手番プレイヤーはお通しトークンを1つ渡して質問する。</li>
+                  <li>答えた人は共感札、回避した人はお通し返しで処理する。</li>
+                  <li>最後に「一番いい話を引き出した人」と「一番場を守った人」が得点する。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chip-row">
+                  <span class="chip">質問カード</span>
+                  <span class="chip">お通しトークン</span>
+                  <span class="chip">共感札</span>
+                  <span class="chip">回避札</span>
+                  <span class="chip">空気ポイント</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side-copy">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                質問「最近ちょっとだけ自分を褒めたいことは？」軽い/共感+1。深掘りすると追加点。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>飲む代わりにお通しを渡す。つまみや小皿のイメージで、会話のきっかけを自然に作れる。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>質問の温度管理が最重要。初対面でも使える軽い質問と、仲の良い場で刺さる質問を分ける。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe-note"><b>安全ルール:</b> 答えたくない質問はいつでもパス可能。パスしても不利になりすぎない。</div>
+        </article>
+
+        <article class="concept" id="concept-9">
+          <div class="concept-band">
+            <div class="rank">09</div>
+            <div class="concept-head">
+              <h3>バー・ミラージュ</h3>
+              <p class="tagline">飲み物の味や雰囲気から、幻のバーを全員で作る物語ゲーム。</p>
+            </div>
+          </div>
+          <div class="facts">
+            <div class="fact"><span>Players</span><b>3-6人</b></div>
+            <div class="fact"><span>Time</span><b>20-35分</b></div>
+            <div class="fact"><span>Type</span><b>物語生成・SNS映え</b></div>
+            <div class="fact"><span>Prototype</span><b>噂カード + 店づくりカード</b></div>
+          </div>
+          <div class="concept-body">
+            <div class="main-copy">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>各ラウンド、飲み物やカードから連想して「幻のバー」の噂を追加する。店名、看板メニュー、常連、禁止事項、夜だけ起きる現象が積み上がり、最後に最も魅力的なバーとして語れるかを競う。</p>
+              </div>
+              <div class="block">
+                <h4>基本の流れ</h4>
+                <ol>
+                  <li>テーマカードを公開する。例: 雨、忘れ物、秘密、終電。</li>
+                  <li>プレイヤーは手札から噂カードを出し、店の設定を1つ語る。</li>
+                  <li>他プレイヤーは共鳴札で「行きたい」「怪しい」「名物っぽい」を投票する。</li>
+                  <li>完成したバーの短い紹介文を作り、最多共鳴の人が勝つ。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chip-row">
+                  <span class="chip">テーマカード</span>
+                  <span class="chip">噂カード</span>
+                  <span class="chip">常連カード</span>
+                  <span class="chip">共鳴札</span>
+                  <span class="chip">店名シート</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side-copy">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                噂「その店では、最後に頼んだ一杯の名前を翌朝まで思い出せない。」
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>味、色、氷、香り、泡を物語の素材にする。ノンアルでも「この色ならどんな店か」で十分成立する。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>勝敗を緩くしすぎないために、共鳴札とテーマ達成点を入れる。写真に撮りたくなる店シートも相性がいい。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe-note"><b>安全ルール:</b> 飲み物は創作の素材。実飲なしでも色カードや香りカードで遊べる。</div>
+        </article>
+
+        <article class="concept" id="concept-10">
+          <div class="concept-band">
+            <div class="rank">10</div>
+            <div class="concept-head">
+              <h3>乾杯写真館</h3>
+              <p class="tagline">グラス配置とポーズで、最高の乾杯写真を作る構図ゲーム。</p>
+            </div>
+          </div>
+          <div class="facts">
+            <div class="fact"><span>Players</span><b>2-8人</b></div>
+            <div class="fact"><span>Time</span><b>10-20分</b></div>
+            <div class="fact"><span>Type</span><b>アクション少なめ・写真/構図</b></div>
+            <div class="fact"><span>Prototype</span><b>構図カード + 得点札</b></div>
+          </div>
+          <div class="concept-body">
+            <div class="main-copy">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>お題カードに合わせて、グラス、手、つまみ、席札を配置し、乾杯写真の構図を作る。実際に撮影してもいいし、テーブル上の配置だけで判定してもいい。映えるだけでなく、制約パズルとして遊ぶ。</p>
+              </div>
+              <div class="block">
+                <h4>基本の流れ</h4>
+                <ol>
+                  <li>お題カードを公開する。例: 三角形、秘密の同盟、最後の一杯、全員主役。</li>
+                  <li>各チームが制限時間内に構図を作る。</li>
+                  <li>得点札で「構図」「物語」「再現難度」「楽しそう」を評価する。</li>
+                  <li>3ラウンドの合計で勝敗を決める。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chip-row">
+                  <span class="chip">構図お題カード</span>
+                  <span class="chip">評価札</span>
+                  <span class="chip">小物トークン</span>
+                  <span class="chip">制限時間カード</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side-copy">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                お題「秘密の同盟」: 2人だけが同じ角度でグラスを傾ける。他の人は気づいていない構図にする。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>飲むのではなく、グラスやつまみの見せ方をゲーム化する。SNS投稿企画やイベント卓に向いている。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>写真が苦手な人でも遊べるよう、撮影なしの「卓上構図判定」ルールを標準にする。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe-note"><b>安全ルール:</b> グラスは空でも水でもよい。撮影や投稿は全員の同意がある場合だけ。</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap closing">
+      <h2>次に作るなら</h2>
+      <p>最短で試作するなら、カード枚数が少なくて場の反応を見やすい案から始めるのが良いです。最初のテストは完成度より「1回遊んで、もう1回やりたいか」を見るのが目的です。</p>
+      <div class="next-list">
+        <div class="next-item">
+          <b>最速試作</b>
+          <span>乾杯アリバイ。役割カード、記憶カード、乾杯札だけで初回テスト可能。</span>
+        </div>
+        <div class="next-item">
+          <b>販売しやすい小箱</b>
+          <span>お通し心理戦。質問カードの質で商品価値を作りやすい。</span>
+        </div>
+        <div class="next-item">
+          <b>大きく育つ企画</b>
+          <span>酔わない酒場戦略。拡張、イベント、客キャラ展開がしやすい。</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
