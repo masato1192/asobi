@@ -1,0 +1,1218 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>バカゲー寄り 飲み会ボードゲーム企画 10案</title>
+  <style>
+    :root {
+      --black: #181512;
+      --ink: #251f18;
+      --paper: #fff5dc;
+      --paper-2: #f6dfad;
+      --paper-3: #ffeab9;
+      --red: #e33d2e;
+      --yellow: #ffc92f;
+      --blue: #1b83c6;
+      --green: #1f9f74;
+      --pink: #ef6fa8;
+      --line: rgba(37, 31, 24, .22);
+      --shadow: 10px 10px 0 rgba(24, 21, 18, .16);
+      --radius: 8px;
+      --serif: "Yu Mincho", "Hiragino Mincho ProN", Georgia, serif;
+      --sans: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Avenir Next", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12px 12px, rgba(227, 61, 46, .13) 0 4px, transparent 4px),
+        linear-gradient(90deg, rgba(37, 31, 24, .06) 1px, transparent 1px),
+        linear-gradient(rgba(37, 31, 24, .06) 1px, transparent 1px),
+        var(--paper);
+      background-size: 38px 38px, 24px 24px, 24px 24px, auto;
+      font-family: var(--sans);
+      line-height: 1.72;
+    }
+
+    .hero {
+      min-height: 78vh;
+      position: relative;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: var(--paper);
+      background:
+        linear-gradient(135deg, rgba(24, 21, 18, .92), rgba(24, 21, 18, .76)),
+        conic-gradient(from 10deg at 20% 30%, var(--red), var(--yellow), var(--blue), var(--green), var(--red));
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background:
+        repeating-linear-gradient(110deg, rgba(255,255,255,.08) 0 2px, transparent 2px 18px),
+        radial-gradient(circle at 70% 30%, rgba(255, 201, 47, .32), transparent 28%);
+      transform: rotate(-2deg);
+      pointer-events: none;
+    }
+
+    .wrap,
+    .hero-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: 72px 0 58px;
+    }
+
+    .stamp {
+      display: inline-flex;
+      align-items: center;
+      transform: rotate(-3deg);
+      margin-bottom: 22px;
+      border: 4px solid var(--yellow);
+      border-radius: var(--radius);
+      padding: 8px 13px;
+      color: var(--yellow);
+      font-weight: 1000;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      box-shadow: 6px 6px 0 rgba(0,0,0,.36);
+    }
+
+    h1 {
+      max-width: 1040px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(44px, 8vw, 102px);
+      line-height: .98;
+      letter-spacing: 0;
+      text-shadow: 5px 5px 0 rgba(0,0,0,.34);
+    }
+
+    .hero-copy {
+      max-width: 820px;
+      margin: 28px 0 0;
+      color: rgba(255, 245, 220, .9);
+      font-size: clamp(16px, 2.1vw, 21px);
+      font-weight: 700;
+    }
+
+    .hero-flags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 34px;
+    }
+
+    .flag {
+      display: inline-flex;
+      min-height: 36px;
+      align-items: center;
+      border: 2px solid rgba(255,255,255,.7);
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      padding: 5px 13px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .section {
+      padding: 54px 0;
+    }
+
+    .title-row {
+      display: grid;
+      grid-template-columns: 1fr minmax(240px, 420px);
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 24px;
+      border-bottom: 5px solid var(--black);
+      padding-bottom: 16px;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(30px, 5vw, 58px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .title-row p {
+      margin: 0;
+      color: rgba(37, 31, 24, .72);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .summary-card {
+      border: 3px solid var(--black);
+      border-radius: var(--radius);
+      background: var(--paper-3);
+      box-shadow: 6px 6px 0 rgba(24,21,18,.15);
+      padding: 17px;
+      min-height: 124px;
+    }
+
+    .summary-card b {
+      display: block;
+      margin-bottom: 8px;
+      font-family: var(--serif);
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .summary-card span {
+      display: block;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .nav {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .nav a {
+      min-height: 104px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 3px solid var(--black);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: 5px 5px 0 rgba(24,21,18,.14);
+      padding: 12px;
+      color: inherit;
+      text-decoration: none;
+      transition: transform .14s ease, box-shadow .14s ease;
+    }
+
+    .nav a:nth-child(4n+1) { background: #fff0a6; }
+    .nav a:nth-child(4n+2) { background: #ffd2df; }
+    .nav a:nth-child(4n+3) { background: #c8ecff; }
+    .nav a:nth-child(4n) { background: #c9f0cd; }
+
+    .nav a:hover {
+      transform: translate(-2px, -2px) rotate(-1deg);
+      box-shadow: 8px 8px 0 rgba(24,21,18,.24);
+    }
+
+    .nav small {
+      font-size: 12px;
+      font-weight: 1000;
+    }
+
+    .nav strong {
+      font-family: var(--serif);
+      font-size: 19px;
+      line-height: 1.22;
+    }
+
+    .concept {
+      position: relative;
+      margin: 30px 0 48px;
+      border: 4px solid var(--black);
+      border-radius: var(--radius);
+      background: #fffdf4;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .concept::after {
+      content: "飲酒任意";
+      position: absolute;
+      top: 16px;
+      right: -38px;
+      width: 168px;
+      transform: rotate(18deg);
+      background: var(--yellow);
+      border: 3px solid var(--black);
+      color: var(--black);
+      font-size: 13px;
+      font-weight: 1000;
+      text-align: center;
+      padding: 3px 0;
+      box-shadow: 3px 3px 0 rgba(24,21,18,.2);
+    }
+
+    .concept-head {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      background: var(--black);
+      color: var(--paper);
+    }
+
+    .no {
+      display: grid;
+      place-items: center;
+      min-height: 128px;
+      border-right: 3px solid rgba(255,255,255,.18);
+      color: var(--yellow);
+      font-family: var(--serif);
+      font-size: 46px;
+      font-weight: 1000;
+    }
+
+    .head-copy {
+      padding: 23px 62px 25px 25px;
+    }
+
+    h3 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(30px, 4.3vw, 52px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .one-liner {
+      margin: 10px 0 0;
+      color: rgba(255, 245, 220, .86);
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      border-bottom: 3px solid var(--black);
+      background: var(--paper-2);
+    }
+
+    .meta div {
+      min-height: 72px;
+      padding: 12px 14px;
+      border-right: 2px solid rgba(37,31,24,.17);
+    }
+
+    .meta div:last-child {
+      border-right: 0;
+    }
+
+    .meta span {
+      display: block;
+      font-size: 11px;
+      font-weight: 1000;
+      color: rgba(37,31,24,.66);
+      text-transform: uppercase;
+    }
+
+    .meta b {
+      display: block;
+      margin-top: 3px;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .body-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr);
+    }
+
+    .main,
+    .side {
+      padding: 24px 26px 28px;
+    }
+
+    .side {
+      border-left: 3px dashed rgba(37,31,24,.25);
+      background:
+        linear-gradient(135deg, rgba(255,201,47,.34), transparent 36%),
+        #fff1c9;
+    }
+
+    .block {
+      margin-bottom: 23px;
+    }
+
+    .block:last-child {
+      margin-bottom: 0;
+    }
+
+    h4 {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 9px;
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 1000;
+      text-transform: uppercase;
+    }
+
+    h4::before {
+      content: "";
+      width: 13px;
+      height: 13px;
+      background: currentColor;
+      border: 2px solid var(--black);
+      transform: rotate(9deg);
+    }
+
+    p,
+    ul,
+    ol {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    ol,
+    ul {
+      padding-left: 1.25em;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 31px;
+      border: 2px solid var(--black);
+      border-radius: 999px;
+      background: #fff;
+      padding: 4px 11px;
+      font-size: 12px;
+      font-weight: 1000;
+      box-shadow: 2px 2px 0 rgba(24,21,18,.14);
+    }
+
+    .sample {
+      border: 3px solid var(--black);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: 5px 5px 0 rgba(24,21,18,.13);
+      padding: 14px;
+    }
+
+    .sample b {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--blue);
+      font-family: var(--serif);
+      font-size: 19px;
+    }
+
+    .safe {
+      border-top: 3px solid var(--black);
+      background: var(--red);
+      color: #fff;
+      padding: 16px 24px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .safe b {
+      color: var(--yellow);
+    }
+
+    .closing {
+      width: min(1180px, calc(100% - 32px));
+      margin: 20px auto 72px;
+      border: 4px solid var(--black);
+      border-radius: var(--radius);
+      background: #fffdf4;
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .closing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .closing-card {
+      border: 3px solid var(--black);
+      border-radius: var(--radius);
+      background: var(--paper-2);
+      padding: 15px;
+    }
+
+    .closing-card b {
+      display: block;
+      margin-bottom: 5px;
+      font-family: var(--serif);
+      font-size: 20px;
+    }
+
+    @media (max-width: 960px) {
+      .title-row,
+      .body-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .summary,
+      .meta,
+      .closing-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .side {
+        border-left: 0;
+        border-top: 3px dashed rgba(37,31,24,.25);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .wrap,
+      .hero-inner,
+      .closing {
+        width: min(100% - 22px, 1180px);
+      }
+
+      .hero {
+        min-height: 72vh;
+      }
+
+      .section {
+        padding: 38px 0;
+      }
+
+      .summary,
+      .nav,
+      .meta,
+      .closing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .concept-head {
+        grid-template-columns: 70px 1fr;
+      }
+
+      .no {
+        min-height: 112px;
+        font-size: 34px;
+      }
+
+      .head-copy,
+      .main,
+      .side {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .concept::after {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="stamp">baka-game edition</div>
+      <h1>バカゲー寄り 飲み会ボードゲーム企画 10案</h1>
+      <p class="hero-copy">飲ませて笑うゲームではなく、意味不明な裁判、謎の注文、変な店長、合法乾杯スポット探しで笑うゲーム集。空グラス、水、つまみトークンだけでも成立する安全なバカゲー案です。</p>
+      <div class="hero-flags">
+        <span class="flag">一気飲みなし</span>
+        <span class="flag">飲酒強制なし</span>
+        <span class="flag">空グラスで可</span>
+        <span class="flag">カード中心で試作可</span>
+        <span class="flag">くだらなさ重視</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="wrap">
+        <div class="title-row">
+          <h2>今回の評価軸</h2>
+          <p>3Agentで60案を出し、QAAgentが「バカさ」「安全性」「試作しやすさ」「商品名の強さ」で上位10案を選定。</p>
+        </div>
+        <div class="summary">
+          <div class="summary-card">
+            <b>バカさ</b>
+            <span>タイトルだけで笑える。遊んでいる絵面がすぐ浮かぶ。</span>
+          </div>
+          <div class="summary-card">
+            <b>安全</b>
+            <span>飲酒は任意。罰として飲ませる構造にしない。</span>
+          </div>
+          <div class="summary-card">
+            <b>小箱</b>
+            <span>カード、コースター、空グラス、トークンで試作できる。</span>
+          </div>
+          <div class="summary-card">
+            <b>再戦</b>
+            <span>10-25分で終わり、もう一回やりやすい。</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="title-row">
+          <h2>上位10案</h2>
+          <p>クリックすると各企画の詳細へ移動します。最初に試作するなら「乾杯裁判」か「注文してません」がかなり軽いです。</p>
+        </div>
+        <nav class="nav" aria-label="バカゲー企画一覧">
+          <a href="#concept-1"><small>01</small><strong>乾杯裁判</strong></a>
+          <a href="#concept-2"><small>02</small><strong>注文してません</strong></a>
+          <a href="#concept-3"><small>03</small><strong>店長、今日のおすすめ変です</strong></a>
+          <a href="#concept-4"><small>04</small><strong>乾杯禁止区域</strong></a>
+          <a href="#concept-5"><small>05</small><strong>乾杯官房長官</strong></a>
+          <a href="#concept-6"><small>06</small><strong>居酒屋怪獣襲来</strong></a>
+          <a href="#concept-7"><small>07</small><strong>乾杯したら世界が変わった</strong></a>
+          <a href="#concept-8"><small>08</small><strong>メニューにないやつ</strong></a>
+          <a href="#concept-9"><small>09</small><strong>コースター大相撲</strong></a>
+          <a href="#concept-10"><small>10</small><strong>二次会ドラゴン</strong></a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="title-row">
+          <h2>企画詳細</h2>
+          <p>各案は、実際に紙で切って遊べるところまで意識して、コンポーネント・1ラウンド・サンプルカードを入れています。</p>
+        </div>
+
+        <article class="concept" id="concept-1">
+          <div class="concept-head">
+            <div class="no">01</div>
+            <div class="head-copy">
+              <h3>乾杯裁判</h3>
+              <p class="one-liner">グラスを証拠品にして、誰が一番しょうもない罪かを裁く法廷バカゲー。</p>
+            </div>
+          </div>
+          <div class="meta">
+            <div><span>Players</span><b>3-7人</b></div>
+            <div><span>Time</span><b>15-25分</b></div>
+            <div><span>Type</span><b>裁判・大喜利・投票</b></div>
+            <div><span>Baka</span><b>罪名が全部くだらない</b></div>
+            <div><span>Test</span><b>カード40枚から可</b></div>
+          </div>
+          <div class="body-grid">
+            <div class="main">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>毎ラウンド1人が被告になる。罪状カードを引き、検察・弁護・証人が「グラスの高さ」「乾杯の角度」「つまみの位置」を証拠としてこじつける。最後に裁判長が判決を出し、もっともしょうもない理屈を通した人が得点する。</p>
+              </div>
+              <div class="block">
+                <h4>1ラウンドの流れ</h4>
+                <ol>
+                  <li>罪状カードを公開する。</li>
+                  <li>被告は「やってません」と無駄に堂々と宣言する。</li>
+                  <li>検察と弁護が証拠カードを1枚ずつ出して主張する。</li>
+                  <li>全員投票で「有罪」「無罪」「意味不明賞」を決める。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chips">
+                  <span class="chip">罪状カード</span>
+                  <span class="chip">証拠カード</span>
+                  <span class="chip">判決札</span>
+                  <span class="chip">異議ありトークン</span>
+                  <span class="chip">乾杯ベル</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                罪状「氷が丸すぎる罪」: 被告はグラスの中に隠された美意識について弁明する。検察は丸さの危険性を主張する。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>乾杯は判決の拍子木。飲む必要はなく、空グラスの音や乾杯ポーズで裁判が進む。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>罰として飲ませないこと。判決は「乾杯コール」「証拠トークン没収」「次の裁判長」などに寄せる。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe"><b>安全設計:</b> 有罪でも飲酒ペナルティなし。水・空グラス・拍手で完全代替。</div>
+        </article>
+
+        <article class="concept" id="concept-2">
+          <div class="concept-head">
+            <div class="no">02</div>
+            <div class="head-copy">
+              <h3>注文してません</h3>
+              <p class="one-liner">誰も頼んでない謎注文が勝手に届き、全員で押し付けたり処理したりする運ゲー。</p>
+            </div>
+          </div>
+          <div class="meta">
+            <div><span>Players</span><b>2-6人</b></div>
+            <div><span>Time</span><b>10-20分</b></div>
+            <div><span>Type</span><b>カード・カオス・押し付け</b></div>
+            <div><span>Baka</span><b>注文名と効果が無関係</b></div>
+            <div><span>Test</span><b>注文カードだけで可</b></div>
+          </div>
+          <div class="body-grid">
+            <div class="main">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>山札から「頼んでない注文」が届く。プレイヤーは受け取る、隣に回す、店員を呼ぶ、記憶を捏造するなどのカードで処理する。手元に謎注文がたまりすぎると会計圧が上がる。</p>
+              </div>
+              <div class="block">
+                <h4>1ラウンドの流れ</h4>
+                <ol>
+                  <li>親が注文カードを1枚めくる。</li>
+                  <li>全員が「頼んだ/頼んでない/見た気がする」を同時宣言する。</li>
+                  <li>処理カードで注文を押し付けるか、会計トークンとして引き取る。</li>
+                  <li>3枚以上抱えた人は「店員さん確認フェイズ」に入る。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chips">
+                  <span class="chip">謎注文カード</span>
+                  <span class="chip">処理カード</span>
+                  <span class="chip">会計圧トークン</span>
+                  <span class="chip">店員さん札</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                注文「ウーロン茶」: 全員は手札を反時計回りに回す。その後、回ってきた手札に小声で謝罪する。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>飲み物名がカード効果のトリガーになる。実物の飲み物は不要で、架空注文だけで遊べる。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>初回は1行効果だけにする。効果文が長いとバカさより処理負荷が勝ってしまう。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe"><b>安全設計:</b> 「注文」はカード上の概念。実際の注文や飲酒とは連動しない。</div>
+        </article>
+
+        <article class="concept" id="concept-3">
+          <div class="concept-head">
+            <div class="no">03</div>
+            <div class="head-copy">
+              <h3>店長、今日のおすすめ変です</h3>
+              <p class="one-liner">終わっている名前のドリンクを、なぜか真剣に売り込む即興セールスゲーム。</p>
+            </div>
+          </div>
+          <div class="meta">
+            <div><span>Players</span><b>3-8人</b></div>
+            <div><span>Time</span><b>15-25分</b></div>
+            <div><span>Type</span><b>大喜利・プレゼン</b></div>
+            <div><span>Baka</span><b>商品名が全部ひどい</b></div>
+            <div><span>Test</span><b>単語カードで可</b></div>
+          </div>
+          <div class="body-grid">
+            <div class="main">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>プレイヤーは日替わり店長。ランダムに引いた「味」「効能」「売り文句」を組み合わせて、今日のおすすめドリンクを作り、30秒で売り込む。客役は最も注文したくないのに気になる一杯へ投票する。</p>
+              </div>
+              <div class="block">
+                <h4>1ラウンドの流れ</h4>
+                <ol>
+                  <li>味カード、効能カード、名前カードを1枚ずつ引く。</li>
+                  <li>30秒で商品名と売り文句を作る。</li>
+                  <li>全員が店長口調でプレゼンする。</li>
+                  <li>「頼みたくないけど忘れられない」票を集めた人が勝つ。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chips">
+                  <span class="chip">味カード</span>
+                  <span class="chip">効能カード</span>
+                  <span class="chip">名前カード</span>
+                  <span class="chip">注文票</span>
+                  <span class="chip">店長バッジ</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                名前「初恋の残業ハイボール」+ 効能「明日の予定を少しだけ他人事にする」+ 味「反省している桃」。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>架空ドリンクの注文ごっこ。乾杯は「ご注文ありがとうございます」の合図で、実飲は不要。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>即興が苦手な人向けにテンプレを入れる。「当店では」「こちらは」「余韻に」などの補助語があると遊びやすい。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe"><b>安全設計:</b> 架空メニュー限定。実際に混ぜる、飲ませる、注文する必要なし。</div>
+        </article>
+
+        <article class="concept" id="concept-4">
+          <div class="concept-head">
+            <div class="no">04</div>
+            <div class="head-copy">
+              <h3>乾杯禁止区域</h3>
+              <p class="one-liner">乾杯したいのに条例が邪魔をする。合法乾杯スポットを探す配置バカゲー。</p>
+            </div>
+          </div>
+          <div class="meta">
+            <div><span>Players</span><b>2-5人</b></div>
+            <div><span>Time</span><b>20-30分</b></div>
+            <div><span>Type</span><b>配置・謎ルール</b></div>
+            <div><span>Baka</span><b>斜め45度が文化財</b></div>
+            <div><span>Test</span><b>紙マップ + グラスコマ</b></div>
+          </div>
+          <div class="body-grid">
+            <div class="main">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>テーブル上に街マップを置き、グラスコマを合法乾杯スポットへ移動させる。ただし毎ラウンド「北半球では持てない」「赤いコースター上だけ合法」などの条例が出る。</p>
+              </div>
+              <div class="block">
+                <h4>1ラウンドの流れ</h4>
+                <ol>
+                  <li>条例カードを2枚公開する。</li>
+                  <li>各プレイヤーはグラスコマを1-2マス動かす。</li>
+                  <li>合法条件を満たす相手とだけ乾杯宣言できる。</li>
+                  <li>違法乾杯は減点ではなく「謎の行政指導」カードを受け取る。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chips">
+                  <span class="chip">街マップ</span>
+                  <span class="chip">条例カード</span>
+                  <span class="chip">グラスコマ</span>
+                  <span class="chip">行政指導カード</span>
+                  <span class="chip">合法乾杯札</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                条例「斜め45度の乾杯は文化財」: グラスコマが斜め向きで接している時だけ乾杯できる。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>グラスの位置・向き・距離がルールの中心。飲むのではなく、合法な乾杯ポーズを作る。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>場に出る条例は常時2-3枚まで。増やしすぎると笑いより確認作業が増える。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe"><b>安全設計:</b> 実物グラスではなく、空カップや紙コマを標準にする。</div>
+        </article>
+
+        <article class="concept" id="concept-5">
+          <div class="concept-head">
+            <div class="no">05</div>
+            <div class="head-copy">
+              <h3>乾杯官房長官</h3>
+              <p class="one-liner">しょうもない出来事を、国の重大発表みたいに読み上げる公式声明ゲーム。</p>
+            </div>
+          </div>
+          <div class="meta">
+            <div><span>Players</span><b>3-8人</b></div>
+            <div><span>Time</span><b>10-20分</b></div>
+            <div><span>Type</span><b>声明・採決・大喜利</b></div>
+            <div><span>Baka</span><b>割り箸が歴史的偉業</b></div>
+            <div><span>Test</span><b>お題カード中心</b></div>
+          </div>
+          <div class="body-grid">
+            <div class="main">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>お題カードに書かれた小さな出来事を、官房長官っぽく正式発表する。全員は質問記者になって、どうでもいい追及をする。採用された声明で乾杯コールが決まる。</p>
+              </div>
+              <div class="block">
+                <h4>1ラウンドの流れ</h4>
+                <ol>
+                  <li>出来事カードを公開する。</li>
+                  <li>発表者は声明テンプレに沿って30秒で発表する。</li>
+                  <li>記者役が1人1問だけ質問する。</li>
+                  <li>最も公式っぽかった人に「閣議決定」トークン。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chips">
+                  <span class="chip">出来事カード</span>
+                  <span class="chip">声明テンプレ</span>
+                  <span class="chip">記者質問カード</span>
+                  <span class="chip">閣議決定トークン</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                出来事「割り箸がきれいに割れた」: 国民生活への影響、今後の対応、関係各所への感謝を必ず述べる。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>採用声明がそのまま乾杯文になる。飲む必要はなく「以上をもちまして乾杯」と唱えるだけでも成立。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>大喜利一本にしないため、テンプレ穴埋めと質問カードで誰でもそれっぽく話せるようにする。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe"><b>安全設計:</b> 乾杯は発表の締め。水、空グラス、拍手で代替可能。</div>
+        </article>
+
+        <article class="concept" id="concept-6">
+          <div class="concept-head">
+            <div class="no">06</div>
+            <div class="head-copy">
+              <h3>居酒屋怪獣襲来</h3>
+              <p class="one-liner">卓上の居酒屋街を、酔ってない怪獣たちが理不尽に踏み荒らす盤面バカゲー。</p>
+            </div>
+          </div>
+          <div class="meta">
+            <div><span>Players</span><b>2-5人</b></div>
+            <div><span>Time</span><b>20-35分</b></div>
+            <div><span>Type</span><b>卓上破壊・協力/対戦</b></div>
+            <div><span>Baka</span><b>唐揚げ発電所を守る</b></div>
+            <div><span>Test</span><b>紙マップ + 小物</b></div>
+          </div>
+          <div class="body-grid">
+            <div class="main">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>グラスや皿をビル、つまみを施設に見立て、怪獣コマの進路を変えながら居酒屋街を守る。乾杯すると怪獣が音に反応して方向転換するが、守りたい施設も巻き込まれる。</p>
+              </div>
+              <div class="block">
+                <h4>1ラウンドの流れ</h4>
+                <ol>
+                  <li>怪獣カードをめくり、移動パターンを確認する。</li>
+                  <li>プレイヤーはグラスビルやつまみ施設を配置する。</li>
+                  <li>任意で乾杯音を使い、怪獣の向きを変える。</li>
+                  <li>守れた施設と壊れた施設で得点や被害を計算する。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chips">
+                  <span class="chip">怪獣カード</span>
+                  <span class="chip">居酒屋街マップ</span>
+                  <span class="chip">施設トークン</span>
+                  <span class="chip">進路カード</span>
+                  <span class="chip">被害チップ</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                施設「唐揚げ発電所」: 壊れると全員のテンション-2。守ると次の乾杯音が2回使える。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>グラスはビル、乾杯音は怪獣誘導。飲み物の量ではなく、卓上の見立てで笑わせる。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>固有怪獣名は避け、オリジナル怪獣にする。グラス転倒防止のため空カップ・紙コップ推奨。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe"><b>安全設計:</b> 実物の液体入りグラスを倒す遊びにしない。空カップと紙トークンで標準化。</div>
+        </article>
+
+        <article class="concept" id="concept-7">
+          <div class="concept-head">
+            <div class="no">07</div>
+            <div class="head-copy">
+              <h3>乾杯したら世界が変わった</h3>
+              <p class="one-liner">乾杯するたびに勝利条件が変わり、さっきまで勝っていた人が急に迷子になる短期決戦。</p>
+            </div>
+          </div>
+          <div class="meta">
+            <div><span>Players</span><b>3-6人</b></div>
+            <div><span>Time</span><b>15-25分</b></div>
+            <div><span>Type</span><b>勝利条件変更・カオス</b></div>
+            <div><span>Baka</span><b>勝ってたのに負け担当</b></div>
+            <div><span>Test</span><b>目的カードだけで可</b></div>
+          </div>
+          <div class="body-grid">
+            <div class="main">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>各自が目的カードを持って点を稼ぐ。ただし乾杯カードが切られるたびに、世界カードが更新され、勝利条件や得点方法が変わる。「手札が少ないほど偉い」「一番負けている人が世界の希望」など理不尽だが短い。</p>
+              </div>
+              <div class="block">
+                <h4>1ラウンドの流れ</h4>
+                <ol>
+                  <li>全員が目的カードを1枚受け取る。</li>
+                  <li>手番でカードを出して得点やトークンを集める。</li>
+                  <li>誰かが乾杯カードを出すと世界カードを更新する。</li>
+                  <li>3回目の世界更新後、現在の勝利条件で勝者を決める。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chips">
+                  <span class="chip">目的カード</span>
+                  <span class="chip">世界カード</span>
+                  <span class="chip">乾杯カード</span>
+                  <span class="chip">得点トークン</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                世界「今から全員、昨日の自分」: 直前ラウンドで取った得点だけが有効。多く持っていたトークンは思い出になる。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>乾杯が世界変更ボタン。空グラスを合わせるだけで発動するので、飲酒量には依存しない。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>勝利条件は短く明快に。変化が多すぎると疲れるので、ゲーム中3回程度がちょうどいい。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe"><b>安全設計:</b> 乾杯はカード効果のスイッチ。飲む必要なし。</div>
+        </article>
+
+        <article class="concept" id="concept-8">
+          <div class="concept-head">
+            <div class="no">08</div>
+            <div class="head-copy">
+              <h3>メニューにないやつ</h3>
+              <p class="one-liner">存在しない飲み物を注文し、その効能を全員で信じる架空メニュー生成ゲーム。</p>
+            </div>
+          </div>
+          <div class="meta">
+            <div><span>Players</span><b>3-8人</b></div>
+            <div><span>Time</span><b>10-20分</b></div>
+            <div><span>Type</span><b>架空メニュー・即興</b></div>
+            <div><span>Baka</span><b>概念サワーが普通に通る</b></div>
+            <div><span>Test</span><b>単語カードで可</b></div>
+          </div>
+          <div class="body-grid">
+            <div class="main">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>プレイヤーは存在しないドリンクを注文する客。名前カードと効能カードを組み合わせて「メニューにないやつ」を作り、店員役に通す。店員役はその飲み物が出せる理由か、出せない理由を即興で返す。</p>
+              </div>
+              <div class="block">
+                <h4>1ラウンドの流れ</h4>
+                <ol>
+                  <li>客は名前カード2枚を組み合わせて注文名を作る。</li>
+                  <li>効能カードを1枚付けて「これください」と宣言する。</li>
+                  <li>店員は提供、品切れ、裏メニュー化のどれかで返す。</li>
+                  <li>全員が一番信じたい架空ドリンクへ投票する。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chips">
+                  <span class="chip">名前カード</span>
+                  <span class="chip">効能カード</span>
+                  <span class="chip">店員リアクション札</span>
+                  <span class="chip">裏メニュー票</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                注文「概念サワー」: 飲むと、さっき言いかけた話を全員が知っていたことにできる。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>架空ドリンクを中心に会話が回る。実物は出さない。グラスを掲げるだけで「届いた」扱い。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>効能カテゴリを固定すると遊びやすい。例: 記憶、席順、手札、会計、テンション。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe"><b>安全設計:</b> 架空ドリンク専用。実際に混ぜる・飲む・飲ませる処理は禁止。</div>
+        </article>
+
+        <article class="concept" id="concept-9">
+          <div class="concept-head">
+            <div class="no">09</div>
+            <div class="head-copy">
+              <h3>コースター大相撲</h3>
+              <p class="one-liner">コースター力士を土俵に入れ、酒場横綱を決める安全な物理バカゲー。</p>
+            </div>
+          </div>
+          <div class="meta">
+            <div><span>Players</span><b>2-6人</b></div>
+            <div><span>Time</span><b>10-20分</b></div>
+            <div><span>Type</span><b>物理・配置・トーナメント</b></div>
+            <div><span>Baka</span><b>決まり手がおしぼり投げ</b></div>
+            <div><span>Test</span><b>紙コースターで可</b></div>
+          </div>
+          <div class="body-grid">
+            <div class="main">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>紙コースターを力士に見立て、テーブル土俵の上で押し合い、配置し合う。実際に強く弾くのではなく、カードで「押す」「かわす」「土俵際」「スポンサー席」などの効果を解決する。</p>
+              </div>
+              <div class="block">
+                <h4>1ラウンドの流れ</h4>
+                <ol>
+                  <li>各自が力士コースターを1枚選ぶ。</li>
+                  <li>土俵カードで初期位置を決める。</li>
+                  <li>同時に技カードを出し、位置と向きを調整する。</li>
+                  <li>土俵外に出たら負け。残った力士に懸賞トークン。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chips">
+                  <span class="chip">力士コースター</span>
+                  <span class="chip">技カード</span>
+                  <span class="chip">土俵シート</span>
+                  <span class="chip">懸賞トークン</span>
+                  <span class="chip">決まり手カード</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                決まり手「レモンしぼり」: 相手を1マス横へずらす。相手が土俵際なら追加で90度回転。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>グラス位置が土俵際やスポンサー席になる。飲む必要はなく、卓上の小物で相撲場を作る。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>液体入りグラスは使わない。紙コップ、空グラス、コースターだけで安全な物理感を出す。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe"><b>安全設計:</b> 強く弾く、こぼす、割れる可能性のある遊びは禁止。カード解決を中心にする。</div>
+        </article>
+
+        <article class="concept" id="concept-10">
+          <div class="concept-head">
+            <div class="no">10</div>
+            <div class="head-copy">
+              <h3>二次会ドラゴン</h3>
+              <p class="one-liner">「一杯だけだから」と誘ってくるドラゴンを、水と休憩とやんわり断りで帰す協力ゲーム。</p>
+            </div>
+          </div>
+          <div class="meta">
+            <div><span>Players</span><b>3-6人</b></div>
+            <div><span>Time</span><b>20-30分</b></div>
+            <div><span>Type</span><b>協力・帰宅・あるある</b></div>
+            <div><span>Baka</span><b>ドラゴンの口癖が一杯だけ</b></div>
+            <div><span>Test</span><b>ドラゴンカード + 帰宅ゲージ</b></div>
+          </div>
+          <div class="body-grid">
+            <div class="main">
+              <div class="block">
+                <h4>遊びの核</h4>
+                <p>プレイヤーは終電前の勇者たち。二次会ドラゴンが毎ラウンド誘い文句を吐くので、水、休憩、会計、タクシー、明日の予定カードを使って穏便に帰宅ゲージを進める。</p>
+              </div>
+              <div class="block">
+                <h4>1ラウンドの流れ</h4>
+                <ol>
+                  <li>ドラゴンの誘いカードを公開する。</li>
+                  <li>全員が対応カードを伏せて同時公開する。</li>
+                  <li>乾杯カードを使うとドラゴンの機嫌は上がるが、帰宅ゲージは止まる。</li>
+                  <li>終電トラックが尽きる前に帰宅ゲージを満たせば勝利。</li>
+                </ol>
+              </div>
+              <div class="block">
+                <h4>コンポーネント</h4>
+                <div class="chips">
+                  <span class="chip">ドラゴンカード</span>
+                  <span class="chip">誘い文句カード</span>
+                  <span class="chip">対応カード</span>
+                  <span class="chip">帰宅ゲージ</span>
+                  <span class="chip">終電トラック</span>
+                </div>
+              </div>
+            </div>
+            <aside class="side">
+              <div class="block sample">
+                <b>サンプルカード</b>
+                誘い「一杯だけだから」: 乾杯カードを出すと機嫌+2、帰宅-1。水カードを出すと機嫌+1、帰宅+1。
+              </div>
+              <div class="block">
+                <h4>飲みの絡み方</h4>
+                <p>飲み会あるあるを、危険飲酒ではなく帰宅ゲームに変換する。水と休憩が強いカードになる。</p>
+              </div>
+              <div class="block">
+                <h4>磨きどころ</h4>
+                <p>誘い圧を肯定しすぎないこと。勝ち筋は「健全に帰る」「水を飲む」「明日を守る」に置く。</p>
+              </div>
+            </aside>
+          </div>
+          <div class="safe"><b>安全設計:</b> 二次会や飲酒を強制するゲームではなく、帰宅と休憩を成功条件にする。</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="closing">
+      <h2>最初に作るならこの3つ</h2>
+      <p>バカゲーは、説明が長いと急に真顔になります。最初のテストは「カードを引いた瞬間に笑えるか」「10分で終わるか」「飲まなくても同じくらい楽しいか」を見るのがよいです。</p>
+      <div class="closing-grid">
+        <div class="closing-card">
+          <b>最速試作: 乾杯裁判</b>
+          <span>罪状カード30枚、証拠カード20枚、判決札だけで今日作れる。</span>
+        </div>
+        <div class="closing-card">
+          <b>量産しやすい: 注文してません</b>
+          <span>謎注文名と1行効果を増やすだけでリプレイ性が伸びる。</span>
+        </div>
+        <div class="closing-card">
+          <b>見た目が強い: 乾杯禁止区域</b>
+          <span>グラス配置と謎条例で、プレイ写真がすぐ変になる。</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
